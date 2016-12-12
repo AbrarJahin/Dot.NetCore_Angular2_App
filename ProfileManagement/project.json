@@ -37,6 +37,12 @@
       ]
     }
   },
+  "Runtimes": {
+    "win7-x64": {},
+    "win10-x64": {},
+    "osx.10.10-x64": {},
+    "ubuntu.14.04-x64": {}
+  },
 
   "buildOptions": {
     "emitEntryPoint": true,
