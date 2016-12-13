@@ -20,7 +20,13 @@
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.Logging.Console": "1.1.0",
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
-    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0"
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0",
+    "Microsoft.EntityFrameworkCore.Design": {
+      "version": "1.1.0",
+      "type": "build"
+    },
+    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0"
   },
 
   "tools": {
@@ -59,7 +65,6 @@
     "include": [
       "appsettings.json",
       "ClientApp/dist",
-      "node_modules",
       "Views",
       "web.config",
       "wwwroot"

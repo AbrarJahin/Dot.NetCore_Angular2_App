@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProfileManagement
 {
@@ -28,6 +29,13 @@ namespace ProfileManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add DB Context
+            var connectionStringBuilder = new Microsoft.Data.Sqlite.SqliteConnectionStringBuilder { DataSource = Configuration.GetConnectionString("SQliteDBName") };
+            var connectionString = connectionStringBuilder.ToString();
+
+            services.AddDbContext<PMDbContext>(options =>
+                options.UseSqlite(connectionString));
+
             // Add framework services.
             services.AddMvc();
         }
