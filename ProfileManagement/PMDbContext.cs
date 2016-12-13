@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProfileManagement.DBModel;
-
+using System;
 
 namespace ProfileManagement
 {
@@ -11,8 +11,18 @@ namespace ProfileManagement
         public PMDbContext(DbContextOptions<PMDbContext> options)
             : base(options)
         {
-            //Database.EnsureDeleted();
-            Database.EnsureCreated();
+            try
+            {
+                Database.EnsureDeleted();
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine( exception.ToString() );
+            }
+            finally
+            {
+                Database.EnsureCreated();
+            }
             //context.Database.Migrate();
 
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
@@ -25,14 +35,32 @@ namespace ProfileManagement
         {
             optionbuilder.UseSqlite(@"Data Source=.\pm.db");
         }
-
+        */
+        /*
+        //Configure Relations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Work done while creating model like seeding
+            modelBuilder.Entity<PostTag>()
+                .HasKey(t => new { t.PostId, t.TagId });
+
+            modelBuilder.Entity<PostTag>()
+                .HasOne(pt => pt.Post)
+                .WithMany(p => p.PostTags)
+                .HasForeignKey(pt => pt.PostId);
+
+            modelBuilder.Entity<PostTag>()
+                .HasOne(pt => pt.Tag)
+                .WithMany(t => t.PostTags)
+                .HasForeignKey(pt => pt.TagId);
         }
         */
-
         //List of Models
-        public DbSet<Profile> Profile { get; set; }
+        public DbSet<Address>       Address { get; set; }
+        public DbSet<Experience>    Experience { get; set; }
+        public DbSet<Phone>         Phone { get; set; }
+        public DbSet<Profile>       Profile { get; set; }
+        public DbSet<Roles>         Roles { get; set; }
+        public DbSet<Users>         Users { get; set; }
+        public DbSet<RoleUser>      RoleUser { get; set; }
     }
 }

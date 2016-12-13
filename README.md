@@ -1,6 +1,8 @@
 # Welcome to ASP.NET Core
 
-It is a simple Angular2 with Dot.Net Core 1.0.1 App.
+It is a simple Angular2 with Dot.Net Core 1.0.1 App based on -
+
+	http://blog.stevensanderson.com/2016/10/04/angular2-template-for-visual-studio/
 
 
 ## Publishing the app-
@@ -52,4 +54,10 @@ See the result directory with a platform specific dotnet command able to run the
 
 	https://www.microsoft.com/net/core#ubuntu
 	https://docs.asp.net/en/latest/publishing/linuxproduction.html
+
+## Entity Framework One To Many-
+
+	http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relationship-in-code-first.aspx
+
+	https://docs.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many
 
