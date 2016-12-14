@@ -6,12 +6,11 @@ namespace ProfileManagement.DBModel
 {
     public class RoleUser
     {
-        public int Id { get; set; }
-        //public int UserId { get; set; }
+        public virtual int Id { get; set; }
+
         [ForeignKey("UserId")]
         public virtual Users User { get; set; }
 
-        //public int RoleId { get; set; }
         [ForeignKey("RoleId")]
         public virtual Roles Role { get; set; }
 
@@ -19,6 +18,6 @@ namespace ProfileManagement.DBModel
         [System.ComponentModel.DefaultValue(typeof(DateTime), "")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        public DateTime RpleAdded { get; set; }
+        public DateTime RoleAddTime { get; set; }
     }
 }

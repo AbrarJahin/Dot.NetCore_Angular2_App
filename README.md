@@ -1,8 +1,8 @@
-# Welcome to ASP.NET Core
+# ASP.NET Core Angular 2 Demo App
 
 It is a simple Angular2 with Dot.Net Core 1.0.1 App based on -
 
-	http://blog.stevensanderson.com/2016/10/04/angular2-template-for-visual-studio/
+`http://blog.stevensanderson.com/2016/10/04/angular2-template-for-visual-studio/`
 
 
 ## Publishing the app-
@@ -30,7 +30,7 @@ And then publish release versions after you've tested, etc.
 
 More can be found -
 
-	http://www.hanselman.com/blog/SelfcontainedNETCoreApplications.aspx
+`http://www.hanselman.com/blog/SelfcontainedNETCoreApplications.aspx`
 
 ### Before publish-
 
@@ -41,23 +41,23 @@ Run Migration-
 
 Detail-
 
-	https://damienbod.com/2015/08/30/asp-net-5-with-sqlite-and-entity-framework-7/
+`https://damienbod.com/2015/08/30/asp-net-5-with-sqlite-and-entity-framework-7/`
 
 A basic tutorial-
 
-	https://stormpath.com/blog/tutorial-entity-framework-core-in-memory-database-asp-net-core
+`https://stormpath.com/blog/tutorial-entity-framework-core-in-memory-database-asp-net-core`
 
 
 See the result directory with a platform specific dotnet command able to run the app.
 
 ## Server Config-
 
-	https://www.microsoft.com/net/core#ubuntu
-	https://docs.asp.net/en/latest/publishing/linuxproduction.html
+`https://www.microsoft.com/net/core#ubuntu`
+`https://docs.asp.net/en/latest/publishing/linuxproduction.html`
 
 ## Entity Framework One To Many-
 
-	http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relationship-in-code-first.aspx
+`http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relationship-in-code-first.aspx`
 
-	https://docs.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many
+`https://docs.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many`
 

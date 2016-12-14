@@ -36,24 +36,28 @@ namespace ProfileManagement
             optionbuilder.UseSqlite(@"Data Source=.\pm.db");
         }
         */
-        /*
+
         //Configure Relations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PostTag>()
-                .HasKey(t => new { t.PostId, t.TagId });
+            //Handling Many to many relationship without having a primary key in RoleUser Table - Start
+            /*
+            modelBuilder.Entity<RoleUser>()
+                .HasKey(t => new { t.Role, t.User });
 
-            modelBuilder.Entity<PostTag>()
-                .HasOne(pt => pt.Post)
-                .WithMany(p => p.PostTags)
-                .HasForeignKey(pt => pt.PostId);
+            modelBuilder.Entity<RoleUser>()
+                .HasOne(pt => pt.User)
+                .WithMany(p => p.RoleUsers)
+                .HasForeignKey(pt => pt.User);
 
-            modelBuilder.Entity<PostTag>()
-                .HasOne(pt => pt.Tag)
-                .WithMany(t => t.PostTags)
-                .HasForeignKey(pt => pt.TagId);
+            modelBuilder.Entity<RoleUser>()
+                .HasOne(pt => pt.Role)
+                .WithMany(t => t.RoleUsers)
+                .HasForeignKey(pt => pt.Role);
+            */
+            //Handling Many to many relationship without having a primary key in RoleUser Table - End
         }
-        */
+
         //List of Models
         public DbSet<Address>       Address { get; set; }
         public DbSet<Experience>    Experience { get; set; }

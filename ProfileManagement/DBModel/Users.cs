@@ -15,14 +15,11 @@ namespace ProfileManagement.DBModel
         [ForeignKey("ProfileId")]
         public virtual Profile Profile { get; set; }
 
-        public List<RoleUser> RoleUsers { get; set; }
-        /*
-        public virtual ICollection<Roles> Roles { get; set; }
+        public virtual ICollection<RoleUser> RoleUsers { get; set; }
 
         public Users()
         {
-            this.Roles = new List<Roles>();
+            this.RoleUsers = new List<RoleUser>();
         }
-        */
     }
 }

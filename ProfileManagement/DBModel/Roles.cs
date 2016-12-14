@@ -9,14 +9,11 @@ namespace ProfileManagement.DBModel
         //Should add a Index - unique in here
         public string RoleName { get; set; }
 
-        public List<RoleUser> RoleUsers { get; set; }
-        /*
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<RoleUser> RoleUsers { get; set; }
 
         public Roles()
         {
-            this.Users = new List<Users>();
+            this.RoleUsers = new List<RoleUser>();
         }
-        */
     }
 }
