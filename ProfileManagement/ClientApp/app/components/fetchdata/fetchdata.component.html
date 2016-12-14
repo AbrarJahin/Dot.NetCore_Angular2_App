@@ -8,16 +8,16 @@
     <thead>
         <tr>
             <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
+            <th>Temp. in CELSIUS</th>
+            <th>Temp. in FAHRENHEIT</th>
             <th>Summary</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let forecast of forecasts">
             <td>{{ forecast.dateFormatted }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
+            <td>{{ forecast.temperatureC }}&#8451;</td>
+            <td>{{ forecast.temperatureF }}&#8457;</td>
             <td>{{ forecast.summary }}</td>
         </tr>
     </tbody>

@@ -5,7 +5,9 @@ import { Http } from '@angular/http';
     selector: 'fetchdata',
     template: require('./fetchdata.component.html')
 })
-export class FetchDataComponent {
+
+export class FetchDataComponent
+{
     public forecasts: WeatherForecast[];
 
     constructor(http: Http) {
@@ -14,6 +16,10 @@ export class FetchDataComponent {
         });
     }
 }
+
+/*
+    Data Model
+*/
 
 interface WeatherForecast {
     dateFormatted: string;
