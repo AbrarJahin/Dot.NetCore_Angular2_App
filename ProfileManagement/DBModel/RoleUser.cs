@@ -6,13 +6,11 @@ namespace ProfileManagement.DBModel
 {
     public class RoleUser
     {
-        public virtual int Id { get; set; }
+        public int RoleId { get; set; }
+        public Roles Role { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual Users User { get; set; }
-
-        [ForeignKey("RoleId")]
-        public virtual Roles Role { get; set; }
+        public int UserId { get; set; }
+        public Users User { get; set; }
 
         //Put other property if exists
         [System.ComponentModel.DefaultValue(typeof(DateTime), "")]

@@ -40,22 +40,9 @@ namespace ProfileManagement
         //Configure Relations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Handling Many to many relationship without having a primary key in RoleUser Table - Start
-            /*
-            modelBuilder.Entity<RoleUser>()
-                .HasKey(t => new { t.Role, t.User });
-
-            modelBuilder.Entity<RoleUser>()
-                .HasOne(pt => pt.User)
-                .WithMany(p => p.RoleUsers)
-                .HasForeignKey(pt => pt.User);
-
-            modelBuilder.Entity<RoleUser>()
-                .HasOne(pt => pt.Role)
-                .WithMany(t => t.RoleUsers)
-                .HasForeignKey(pt => pt.Role);
-            */
-            //Handling Many to many relationship without having a primary key in RoleUser Table - End
+            //Handling Many to many relationship without having a primary key - Start
+            modelBuilder.Entity<RoleUser>().HasKey(x => new { x.RoleId, x.UserId });
+            //Handling Many to many relationship without having a primary key - End
         }
 
         //List of Models
