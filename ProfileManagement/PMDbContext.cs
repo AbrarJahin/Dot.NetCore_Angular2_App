@@ -40,9 +40,11 @@ namespace ProfileManagement
         //Configure Relations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Handling Many to many relationship without having a primary key - Start
+            //Handling Many to many relationship composite keys - Start
             modelBuilder.Entity<RoleUser>().HasKey(x => new { x.RoleId, x.UserId });
-            //Handling Many to many relationship without having a primary key - End
+            modelBuilder.Entity<Attendance>().HasKey(x => new { x.Date, x.ProfileId });
+            modelBuilder.Entity<Leave>().HasKey(x => new { x.Date, x.ProfileId });
+            //Handling Many to many relationship composite keys - End
         }
 
         //List of Models
@@ -53,5 +55,6 @@ namespace ProfileManagement
         public DbSet<Roles>         Roles { get; set; }
         public DbSet<Users>         Users { get; set; }
         public DbSet<RoleUser>      RoleUser { get; set; }
+        public DbSet<Attendance>    Attendance { get; set; }
     }
 }
