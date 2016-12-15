@@ -61,5 +61,20 @@ namespace ProfileManagement.Controllers.api
 
             return Ok(response);
         }
+
+        [HttpDelete("[action]")]
+        public async Task<IActionResult> Delete(int profileID)
+        {
+            Profile profileToRemove = _context.Profile.SingleOrDefault(x => x.Id == profileID); //returns a single item.
+
+            if (profileToRemove != null)
+            {
+                _context.Profile.Remove(profileToRemove);
+                _context.SaveChanges();
+                return Ok("Successfully Deleted");
+            }
+            else
+                return NotFound("Profile Not Found");
+        }
     }
 }

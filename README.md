@@ -62,3 +62,6 @@ http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relation
 
 https://docs.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many
 
+## Bootstrap-
+
+https://valor-software.com/ng2-bootstrap

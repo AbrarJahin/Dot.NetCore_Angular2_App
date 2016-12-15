@@ -39,4 +39,21 @@ export class ProfileListComponent
     {
         alert("Add new Profile");
     }
+
+    public editProfile(profileId)
+    {
+        alert("Edited - " + profileId);
+    }
+
+    public deleteProfile(profileId)
+    {
+        //http://localhost:63032/api/Profile/Delete
+        //profileID
+        /*
+        this.http.delete(`/api/Profile/Delete`) // ...using put request
+            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+        */
+        alert("Deleted - " + profileId);
+    }
 }
