@@ -13,7 +13,7 @@ namespace ProfileManagement
         {
             try
             {
-                Database.EnsureDeleted();
+                //Database.EnsureDeleted();
             }
             catch(Exception exception)
             {
@@ -24,13 +24,13 @@ namespace ProfileManagement
                 Database.EnsureCreated();
             }
             //context.Database.Migrate();
-
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
         }
 
         /*
+         * //If you want to do more with configurations
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlite(@"Data Source=.\pm.db");

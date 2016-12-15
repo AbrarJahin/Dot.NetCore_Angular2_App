@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
@@ -13,8 +12,8 @@ namespace ProfileManagement.Controllers
     public class SampleDataController : Controller
     {
         private readonly PMDbContext _context;
-        private IHostingEnvironment _environment;
-        private string uploadDirectory;
+        private readonly IHostingEnvironment _environment;
+        private readonly string uploadDirectory;
 
         public SampleDataController(PMDbContext context, IHostingEnvironment environment) //, IHostingEnvironment environment
         {

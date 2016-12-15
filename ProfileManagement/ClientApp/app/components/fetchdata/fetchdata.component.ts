@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
+import { WeatherForecast } from '../../dataModel/WeatherForecast.ts';   //Data Model
 
 @Component({
     selector: 'fetchdata',
@@ -15,15 +16,4 @@ export class FetchDataComponent
             this.forecasts = result.json();
         });
     }
-}
-
-/*
-    Data Model
-*/
-
-interface WeatherForecast {
-    dateFormatted: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
 }

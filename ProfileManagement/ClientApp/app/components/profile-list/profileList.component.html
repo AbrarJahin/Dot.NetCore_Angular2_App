@@ -1,1 +1,23 @@
-﻿List of profile will goes here....
+﻿<h1>Profile List</h1>
+<p>Showing all profiles..</p>
+
+<button (click)="addProfile()">Add New Profile</button>
+
+<p *ngIf="!profiles"><em>{{ loadingMessage }}</em></p>
+
+<table class='table' *ngIf="profiles">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date Of Birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profile of profiles">     <!-- Foreach loop -->
+            <td>{{ profile.id }}</td>
+            <td>{{ profile.name }}</td>
+            <td>{{ profile.dob }}</td>
+        </tr>
+    </tbody>
+</table>
