@@ -4,6 +4,16 @@ import { Component } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Profile } from '../../dataModel/Profile.ts';   //Data Model
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+    imports: [
+        FormsModule
+    ],
+    declarations: [
+        ProfileListComponent
+    ]
+})
 
 @Component({
     selector: 'profile-list',
@@ -13,14 +23,16 @@ import { Router } from '@angular/router';
 
 export class ProfileListComponent
 {
-    public profiles: Profile[];         //Can be accessed in view
-    public loadingMessage: string = "Loading Data ..";
+    private profiles: Profile[];         //All Profiles
+    private loadingMessage: string = "Loading Data ..";
 
     private _getAllProfileUrl: string = "/api/Profile/Get?currentPageNo=1&pageSize=200";
     private _deleteProfileUrl: string = "/api/Profile/Delete";
 
-    public visible = false;
-    private visibleAnimate = false;
+    private isModalVisible = false;
+    private isModalAnimatable = false;
+
+    private profileToAdd: Profile;         //Current Profile to add from pop up
 
     constructor(private http: Http, private router: Router){}
 
@@ -33,7 +45,8 @@ export class ProfileListComponent
     {
         console.log(this.profiles.length);
 
-        if (this.profiles.length < 1) {
+        if (this.profiles.length < 1)
+        {
             this.loadingMessage = "No Data Found !!!";      //interpolation
         }
         else
@@ -47,10 +60,16 @@ export class ProfileListComponent
         alert("View - " + profileId);
     }
 
-    public addProfile(): void
+    public addProfileSubmit(event): void
     {
+        event.preventDefault();
+        alert("Profile Added Successfully");
         //this.router.navigate(['./SomewhereElse']);
-        this.show();
+
+        console.log(this.profileToAdd);
+
+        this.reloadAllData();
+        this.hideAddProfileModal();
     }
 
     public editProfile(profileId): void
@@ -77,13 +96,15 @@ export class ProfileListComponent
             });
     }
 
-    public show(): void {
-        this.visible = true;
-        setTimeout(() => this.visibleAnimate = true);
+    public showAddProfileModal(): void
+    {
+        this.isModalVisible = true;
+        setTimeout(() => this.isModalAnimatable = true, 300);
     }
 
-    public hide(): void {
-        this.visibleAnimate = false;
-        setTimeout(() => this.visible = false, 300);
+    public hideAddProfileModal(): void
+    {
+        this.isModalAnimatable = false;
+        setTimeout(() => this.isModalVisible = false, 300);
     }
 }
