@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Profile } from '../../dataModel/Profile.ts';   //Data Model
+//import { Router } from '@angular/router';
 
 @Component({
     selector: 'profile-list',
@@ -13,13 +14,14 @@ export class ProfileListComponent
     public profiles: Profile[];         //Can be accessed in view
     public loadingMessage: string = "Loading Data ..";
 
-    constructor(http: Http)
+    private _getAllProfileUrl: string = "/api/Profile/Get?currentPageNo=1&pageSize=200";
+    private _deleteProfileUrl: string = "/api/Profile/Delete";
+
+    constructor(private http: Http) { }   //, private router: Router
+
+    ngOnInit(): void
     {
-        http.get('/api/Profile/Get?currentPageNo=1&pageSize=200').subscribe(result =>
-        {
-            this.profiles = result.json();
-            console.log(result);
-        });
+        this.reloadAllData();
     }
 
     ngOnChanges(changes)
@@ -40,10 +42,13 @@ export class ProfileListComponent
         alert("View - " + profileId);
     }
 
+    /*
     public addProfile()
     {
         alert("Add new Profile");
+        this.router.navigate(['./SomewhereElse']);
     }
+    */
 
     public editProfile(profileId)
     {
@@ -52,13 +57,20 @@ export class ProfileListComponent
 
     public deleteProfile(profileId)
     {
-        //http://localhost:63032/api/Profile/Delete
-        //profileID
-        /*
-        this.http.delete(`/api/Profile/Delete`) // ...using put request
-            .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
-        */
-        alert("Deleted - " + profileId);
+        this.http.delete(this._deleteProfileUrl, new RequestOptions({
+            search: new URLSearchParams('profileId=' + profileId)
+        })).subscribe(res => {
+            alert("Deleted - " + profileId);
+            this.reloadAllData();
+        });
+    }
+
+    private reloadAllData()
+    {
+        this.http.get(this._getAllProfileUrl)
+            .subscribe(result => {
+                this.profiles = result.json();
+                console.log(result);
+            });
     }
 }

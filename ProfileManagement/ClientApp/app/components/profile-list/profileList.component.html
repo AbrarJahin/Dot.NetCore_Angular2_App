@@ -1,7 +1,7 @@
 ﻿<h1>Profile List</h1>
 <p>Showing all profiles..</p>
 
-<button (click)="addProfile()">Add New Profile</button>
+<a [routerLink]="['./Add_New_Profile']" type="button" class="btn btn-success">Add New Profile</a>
 
 <p *ngIf="!profiles"><em>{{ loadingMessage }}</em></p>
 
