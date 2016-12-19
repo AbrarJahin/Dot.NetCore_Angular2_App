@@ -24,7 +24,7 @@ import { ProfileListComponent } from './components/profile-list/profileList.comp
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'profile-list', component: ProfileListComponent },
+            { path: 'profile', component: ProfileListComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '**', redirectTo: 'home' }      //Should be 404 page here
         ])

@@ -15,7 +15,7 @@ export class ProfileListComponent
 
     constructor(http: Http)
     {
-        http.get('/api/Profile/Get?currentPageNo=1&pageSize=20').subscribe(result =>
+        http.get('/api/Profile/Get?currentPageNo=1&pageSize=200').subscribe(result =>
         {
             this.profiles = result.json();
             console.log(result);
@@ -33,6 +33,11 @@ export class ProfileListComponent
         {
             this.loadingMessage = "Data Loaded..";      //interpolation
         }
+    }
+
+    public viewProfile(profileId)
+    {
+        alert("View - " + profileId);
     }
 
     public addProfile()

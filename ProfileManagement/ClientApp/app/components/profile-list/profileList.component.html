@@ -20,8 +20,9 @@
             <td>{{ profile.name }}</td>
             <td>{{ profile.dob }}</td>
             <td>
-                <button type="button" class="btn btn-warning"   (click)="editProfile(profile.id)">Edit</button>
-                <button type="button" class="btn btn-danger"    (click)="deleteProfile(profile.id)">Delete</button>
+                <button type="button" class="btn btn-info"      (click)="viewProfile(profile.id)">      View    </button>
+                <button type="button" class="btn btn-warning"   (click)="editProfile(profile.id)">      Edit    </button>
+                <button type="button" class="btn btn-danger"    (click)="deleteProfile(profile.id)">    Delete  </button>
             </td>
         </tr>
     </tbody>
