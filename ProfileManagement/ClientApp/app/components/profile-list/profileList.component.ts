@@ -16,9 +16,9 @@ export class ProfileListComponent
     private profiles: Profile[];         //All Profiles
     private loadingMessage: string = "Loading Data ..";
 
-    private _getAllProfileUrl:  string = window.location.protocol + '//' + window.location.host + "/api/Profile/Get?currentPageNo=1&pageSize=200";
-    private _deleteProfileUrl:  string = window.location.protocol + '//' + window.location.host + "/api/Profile/Delete";
-    private _addProfileUrl:     string = window.location.protocol + '//' + window.location.host + "/api/Profile/Add";
+    private _getAllProfileUrl:  string = "/api/Profile/Get?currentPageNo=1&pageSize=200";      //window.location.protocol + '//' + window.location.host + 
+    private _deleteProfileUrl:  string = "/api/Profile/Delete";
+    private _addProfileUrl:     string = "/api/Profile/Add";
 
     private isModalVisible = false;
     private isModalAnimatable = false;

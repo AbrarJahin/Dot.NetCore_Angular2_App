@@ -65,10 +65,12 @@ namespace ProfileManagement
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                //No Need because it will be handled by Angular2
 
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Error" });
+                    defaults: new { controller = "Home", action = "Index" });
+                    //defaults: new { controller = "Home", action = "Error" });
             });
         }
     }
