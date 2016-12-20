@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ProfileManagement.DBModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,10 +67,19 @@ namespace ProfileManagement.Controllers.api
         [HttpPost("[action]")]
         public async Task<IActionResult> Add(string name, string dob)
         {
+            if(name.Length==0)
+            {
+                return View("Error"); ;
+            }
+
             Profile profileToSave = new Profile
                                         {
                                             Name = name,
-                                            DateOfBirth = DateTime.Now
+                                            DateOfBirth = DateTime.ParseExact(
+                                                                    dob,
+                                                                    "yyyy-MM-dd",
+                                                                    CultureInfo.InvariantCulture
+                                                            )
                                         };
             _context.Profile.Add(profileToSave);
             await _context.SaveChangesAsync();

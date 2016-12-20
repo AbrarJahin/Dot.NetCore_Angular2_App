@@ -46,7 +46,7 @@
                 <button (click)="hideAddProfileModal()" type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Modal Header</h4>
             </div>
-            <form (ngSubmit)="addProfileSubmit($event,name.value,dob.value)">
+            <form>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -60,7 +60,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-warning" type="reset">Reset</button>
-                    <button class="btn btn-info" (click)="addProfileSubmit($event,name.value,dob.value)">Add Profile</button>
+                    <button class="btn btn-info" (click)="addProfileSubmit($event,name.value,dob.value)" >Add Profile</button>
                 </div>
             </form>
         </div>
