@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProfileManagement.DBModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -60,6 +61,19 @@ namespace ProfileManagement.Controllers.api
             });
 
             return Ok(response);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Add(string name, string dob)
+        {
+            Profile profileToSave = new Profile
+                                        {
+                                            Name = name,
+                                            DateOfBirth = DateTime.Now
+                                        };
+            _context.Profile.Add(profileToSave);
+            await _context.SaveChangesAsync();
+            return Ok(profileToSave);
         }
 
         [HttpDelete("[action]")]

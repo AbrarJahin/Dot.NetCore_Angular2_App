@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 import { Component, NgModule } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams, Headers, RequestMethod } from '@angular/http';
 import { Profile } from '../../dataModel/Profile.ts';   //Data Model
 import { Router } from '@angular/router';
 
@@ -16,8 +16,9 @@ export class ProfileListComponent
     private profiles: Profile[];         //All Profiles
     private loadingMessage: string = "Loading Data ..";
 
-    private _getAllProfileUrl: string = "/api/Profile/Get?currentPageNo=1&pageSize=200";
-    private _deleteProfileUrl: string = "/api/Profile/Delete";
+    private _getAllProfileUrl:  string = window.location.protocol + '//' + window.location.host + "/api/Profile/Get?currentPageNo=1&pageSize=200";
+    private _deleteProfileUrl:  string = window.location.protocol + '//' + window.location.host + "/api/Profile/Delete";
+    private _addProfileUrl:     string = window.location.protocol + '//' + window.location.host + "/api/Profile/Add";
 
     private isModalVisible = false;
     private isModalAnimatable = false;
@@ -31,7 +32,7 @@ export class ProfileListComponent
 
     ngOnChanges(changes): void
     {
-        console.log(this.profiles.length);
+        //console.log(this.profiles.length);
 
         if (this.profiles.length < 1)
         {
@@ -45,20 +46,36 @@ export class ProfileListComponent
 
     public viewProfile(profileId): void
     {
-        alert("View - " + profileId);
+        this.router.navigate(['./profile/' + profileId]);
     }
 
     public addProfileSubmit(event,name,dob): void
     {
         event.preventDefault();
-        alert("Profile Added Successfully");
-        //this.router.navigate(['./SomewhereElse']);
 
-        console.log(name);
-        console.log(dob);
+        let urlSearchParams = new URLSearchParams();
+        urlSearchParams.append('name', name);
+        urlSearchParams.append('dob', dob);
+        let body = urlSearchParams.toString();
 
-        this.reloadAllData();
-        this.hideAddProfileModal();
+        let opts: RequestOptions = new RequestOptions();
+        opts.method = RequestMethod.Post;
+        opts.headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+
+        this.http.post(this._addProfileUrl, body, opts)
+            .subscribe(res => {
+                alert("Profile Added Successfully");
+
+                console.log(res);
+
+                this.reloadAllData();
+                this.hideAddProfileModal();
+            },
+            (err) => {
+                console.log(err);
+                alert("An Error Occured !!");
+            }
+        );
     }
 
     public editProfile(profileId): void
@@ -81,7 +98,7 @@ export class ProfileListComponent
         this.http.get(this._getAllProfileUrl)
             .subscribe(result => {
                 this.profiles = result.json();
-                console.log(result);
+                //console.log(result);
             });
     }
 

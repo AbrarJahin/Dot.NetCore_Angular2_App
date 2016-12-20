@@ -43,6 +43,7 @@ namespace ProfileManagement.Controllers
         {
             var rng = new Random();
 
+            /*
             Profile demoProfile = new Profile
             {
                 Name = Guid.NewGuid().ToString().Substring(0, 8)
@@ -50,6 +51,7 @@ namespace ProfileManagement.Controllers
 
             _context.Profile.Add(demoProfile);
             _context.SaveChanges();
+            */
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
