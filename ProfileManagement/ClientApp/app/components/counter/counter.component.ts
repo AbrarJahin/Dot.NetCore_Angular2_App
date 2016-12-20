@@ -4,10 +4,13 @@ import { Component } from '@angular/core';
     selector: 'counter',
     template: require('./counter.component.html')
 })
-export class CounterComponent {
+
+export class CounterComponent
+{
     public currentCount = 0;
 
-    public incrementCounter() {
+    public incrementCounter()
+    {
         this.currentCount++;
     }
 }

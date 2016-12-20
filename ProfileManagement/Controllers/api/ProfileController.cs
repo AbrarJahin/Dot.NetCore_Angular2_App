@@ -41,13 +41,13 @@ namespace ProfileManagement.Controllers.api
             var profiles = await _context.Profile
                 //.Include(u => u.Descriptions)
                 .Select(p => new {
-                                    p.Id,
-                                    p.Name,
-                                    p.DateOfBirth
-                                 })
+                    p.Id,
+                    p.Name,
+                    p.DateOfBirth
+                })
                 .Distinct()
                 .OrderBy(p => p.Name)
-                .Skip((currentPageNo-1)*pageSize)
+                .Skip((currentPageNo - 1) * pageSize)
                 .Take(pageSize)
                 .ToArrayAsync();
 
@@ -62,6 +62,16 @@ namespace ProfileManagement.Controllers.api
             });
 
             return Ok(response);
+        }
+
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var profile = await _context.Profile
+                .Where(p => p.Id== id)
+                .FirstOrDefaultAsync();
+
+            return Ok(profile);
         }
 
         [HttpPost("[action]")]

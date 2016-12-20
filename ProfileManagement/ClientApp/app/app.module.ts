@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ProfileListComponent } from './components/profile-list/profileList.component';
+import { ProfileDetailComponent } from './components/profile-detail/profileDetail.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -16,7 +17,8 @@ import { ProfileListComponent } from './components/profile-list/profileList.comp
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        ProfileListComponent
+        ProfileListComponent,
+        ProfileDetailComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -25,6 +27,7 @@ import { ProfileListComponent } from './components/profile-list/profileList.comp
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'profile', component: ProfileListComponent },
+            { path: 'profile/:id', component: ProfileDetailComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '**', redirectTo: 'home' }      //Should be 404 page here
         ])
