@@ -1,19 +1,9 @@
 ﻿'use strict';
 
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Profile } from '../../dataModel/Profile.ts';   //Data Model
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-
-@NgModule({
-    imports: [
-        FormsModule
-    ],
-    declarations: [
-        ProfileListComponent
-    ]
-})
 
 @Component({
     selector: 'profile-list',
@@ -31,8 +21,6 @@ export class ProfileListComponent
 
     private isModalVisible = false;
     private isModalAnimatable = false;
-
-    private profileToAdd: Profile;         //Current Profile to add from pop up
 
     constructor(private http: Http, private router: Router){}
 
@@ -60,13 +48,14 @@ export class ProfileListComponent
         alert("View - " + profileId);
     }
 
-    public addProfileSubmit(event): void
+    public addProfileSubmit(event,name,dob): void
     {
         event.preventDefault();
         alert("Profile Added Successfully");
         //this.router.navigate(['./SomewhereElse']);
 
-        console.log(this.profileToAdd);
+        console.log(name);
+        console.log(dob);
 
         this.reloadAllData();
         this.hideAddProfileModal();
