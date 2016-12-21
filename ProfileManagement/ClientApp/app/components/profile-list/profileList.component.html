@@ -18,7 +18,7 @@
         <tr *ngFor="let profile of profiles">     <!-- Foreach loop -->
             <td>{{ profile.id }}</td>
             <td>{{ profile.name }}</td>
-            <td>{{ profile.dob }}</td>
+            <td>{{ profile.dob | date: 'dd/MM/yyyy' }}</td>
             <td>
                 <button type="button" class="btn btn-info"      (click)="viewProfile(profile.id)">      View    </button>
                 <button type="button" class="btn btn-warning"   (click)="editProfile(profile.id)">      Edit    </button>
