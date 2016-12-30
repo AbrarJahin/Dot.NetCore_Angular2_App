@@ -1,6 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
+import { Http, RequestOptions, URLSearchParams, Headers, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -22,11 +21,6 @@ export class ProfileService
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    /*
-    getProfile(id: number): Observable<Profile> {
-        return this.getProfiles()
-            .map((profiles: Profile[]) => profiles.find(p => p.id === id));
-    }*/
 
     private handleError(error: Response)
     {
