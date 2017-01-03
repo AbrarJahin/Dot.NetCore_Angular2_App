@@ -1,5 +1,17 @@
 # ASP.NET Core Angular 2 Demo App
 
+------------------------------------------------
+
+Execute-
+
+	cd ./ProfileManagement
+	webpack --config webpack.config.vendor.js
+    webpack --config webpack.config.js
+
+before run application. It is a bug in webpack.
+
+------------------------------------------------
+
 It is a simple Angular2 with Dot.Net Core 1.0.1 App based on -
 
 http://blog.stevensanderson.com/2016/10/04/angular2-template-for-visual-studio/

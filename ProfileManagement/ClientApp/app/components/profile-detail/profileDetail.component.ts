@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 
 export class ProfileDetailComponent
 {
-    private _getProfileBaseUrl: string = "http://localhost:63032/api/Profile/Get/";
+    private _getProfileBaseUrl: string = "./api/Profile/Get/";
     private id: number;
     private data: any;
 
